@@ -1,0 +1,29 @@
+group 'web.test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.example.Main"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven{url 'https://repo1.maven.org/maven2'}
+}
+
+dependencies {
+    testCompile group: 'com.codeborne', name: 'selenide', version: '4.10.01'
+    testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
+    testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.13'
+
+}
+
+jar {
+    manifest.attributes("Main-Class": mainClassName);
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.10"
+}
